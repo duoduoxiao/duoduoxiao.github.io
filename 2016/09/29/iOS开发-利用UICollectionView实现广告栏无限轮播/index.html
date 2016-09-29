@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/09/29/iOS开发-利用UICollectionView实现广告栏无限轮播/index.html">
 <meta property="og:site_name" content="欢迎">
 <meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;最近整理了之前写过的代码，对广告栏Banner位的无限轮播的实现做了一个总结。实现方法有很多，一般用UIScrollView实现，也有一些用UICollectionView实现。但总体来说，UICollectionView实现只是利用了苹果底层的复用功能，而UISCrollView实现则需要自己实现复用。网上可以找到很多相关的三方库，但是我一直">
-<meta property="og:updated_time" content="2016-09-29T08:55:30.000Z">
+<meta property="og:updated_time" content="2016-09-29T09:51:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[iOS开发]利用UICollectionView实现广告栏无限轮播">
 <meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;最近整理了之前写过的代码，对广告栏Banner位的无限轮播的实现做了一个总结。实现方法有很多，一般用UIScrollView实现，也有一些用UICollectionView实现。但总体来说，UICollectionView实现只是利用了苹果底层的复用功能，而UISCrollView实现则需要自己实现复用。网上可以找到很多相关的三方库，但是我一直">
@@ -189,6 +189,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
@@ -253,6 +263,25 @@
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS开发/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -404,6 +433,13 @@
             </a>
           </div>
 
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
           
 
           
