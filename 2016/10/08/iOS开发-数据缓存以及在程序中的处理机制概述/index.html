@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;前几天在做新版本需求的时候，遇到文本滚动的需求，类似于LED显示屏轮播广告的效果。当时考虑到以后可能会扩展和变更需求，所以就参考了一下资料，自己封装了一个使用简单，可以满足日常使用的控件，这几天闲下来了，就整理了一下，效果图如下：">
+<meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;关于数据的缓存，网上的资料和博客很多，总的来说五种方法，plist，写文件，NSUserDefaults，FMDB等操作数据库以及苹果自家的coreData，这些如何如何使用，资料文档很多，这里不想多说。&amp;#160; &amp;#160; &amp;#160; &amp;#160;主要想说的是在程序中如何使用它们，用来缓存程序中的数据。直接说现在我正在用的处理方法。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[iOS开发]文本滚动的实现，类似LED文字滚动效果">
-<meta property="og:url" content="http://yoursite.com/2016/09/29/iOS开发-文本滚动的实现，类似LED文字滚动效果/index.html">
+<meta property="og:title" content="[iOS开发]数据缓存以及在程序中的处理机制概述">
+<meta property="og:url" content="http://yoursite.com/2016/10/08/iOS开发-数据缓存以及在程序中的处理机制概述/index.html">
 <meta property="og:site_name" content="欢迎">
-<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;前几天在做新版本需求的时候，遇到文本滚动的需求，类似于LED显示屏轮播广告的效果。当时考虑到以后可能会扩展和变更需求，所以就参考了一下资料，自己封装了一个使用简单，可以满足日常使用的控件，这几天闲下来了，就整理了一下，效果图如下：">
-<meta property="og:image" content="http://oe983oqm8.bkt.clouddn.com/1749624-4337ce7ffbf57693.gif">
-<meta property="og:updated_time" content="2016-09-29T09:52:26.000Z">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;关于数据的缓存，网上的资料和博客很多，总的来说五种方法，plist，写文件，NSUserDefaults，FMDB等操作数据库以及苹果自家的coreData，这些如何如何使用，资料文档很多，这里不想多说。&amp;#160; &amp;#160; &amp;#160; &amp;#160;主要想说的是在程序中如何使用它们，用来缓存程序中的数据。直接说现在我正在用的处理方法。">
+<meta property="og:image" content="http://oe983oqm8.bkt.clouddn.com/1749624-189e3460f1de4b00.jpeg">
+<meta property="og:updated_time" content="2016-10-08T14:38:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[iOS开发]文本滚动的实现，类似LED文字滚动效果">
-<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;前几天在做新版本需求的时候，遇到文本滚动的需求，类似于LED显示屏轮播广告的效果。当时考虑到以后可能会扩展和变更需求，所以就参考了一下资料，自己封装了一个使用简单，可以满足日常使用的控件，这几天闲下来了，就整理了一下，效果图如下：">
-<meta name="twitter:image" content="http://oe983oqm8.bkt.clouddn.com/1749624-4337ce7ffbf57693.gif">
+<meta name="twitter:title" content="[iOS开发]数据缓存以及在程序中的处理机制概述">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;关于数据的缓存，网上的资料和博客很多，总的来说五种方法，plist，写文件，NSUserDefaults，FMDB等操作数据库以及苹果自家的coreData，这些如何如何使用，资料文档很多，这里不想多说。&amp;#160; &amp;#160; &amp;#160; &amp;#160;主要想说的是在程序中如何使用它们，用来缓存程序中的数据。直接说现在我正在用的处理方法。">
+<meta name="twitter:image" content="http://oe983oqm8.bkt.clouddn.com/1749624-189e3460f1de4b00.jpeg">
 
 
 
@@ -116,9 +116,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/29/iOS开发-文本滚动的实现，类似LED文字滚动效果/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/08/iOS开发-数据缓存以及在程序中的处理机制概述/"/>
 
-  <title> [iOS开发]文本滚动的实现，类似LED文字滚动效果 | 欢迎 </title>
+  <title> [iOS开发]数据缓存以及在程序中的处理机制概述 | 欢迎 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -248,7 +248,7 @@
             
             
               
-                [iOS开发]文本滚动的实现，类似LED文字滚动效果
+                [iOS开发]数据缓存以及在程序中的处理机制概述
               
             
           </h1>
@@ -260,8 +260,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-29T17:04:01+08:00" content="2016-09-29">
-              2016-09-29
+            <time itemprop="dateCreated" datetime="2016-10-08T22:36:44+08:00" content="2016-10-08">
+              2016-10-08
             </time>
           </span>
 
@@ -307,12 +307,13 @@
       
 
       
-        <p>&#160; &#160; &#160; &#160;前几天在做新版本需求的时候，遇到文本滚动的需求，类似于LED显示屏轮播广告的效果。当时考虑到以后可能会扩展和变更需求，所以就参考了一下资料，自己封装了一个使用简单，可以满足日常使用的控件，这几天闲下来了，就整理了一下，效果图如下：<br><a id="more"></a></p>
-<p><img src="http://oe983oqm8.bkt.clouddn.com/1749624-4337ce7ffbf57693.gif" alt="演示图"></p>
-<p>使用很简单，先看一下.h文件留出的接口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">typedef NS_ENUM(NSInteger,MyTextScrollMode)&#123;</div><div class="line">    MyTextScrollContinuous,     //连续的滚动</div><div class="line">    MyTextScrollSpace,          //间隔的滚动</div><div class="line">    MyTextScrollRound           //往复的滚动</div><div class="line">&#125;;</div><div class="line"></div><div class="line"></div><div class="line">typedef NS_ENUM(NSInteger,MyTextScrollDirection)&#123;</div><div class="line">    MyTextScrollMoveLeft,       //向左滚动   </div><div class="line">    MyTextScrollMoveRight       //向右滚动</div><div class="line">&#125;;</div><div class="line"></div><div class="line"></div><div class="line">@interface MyScrollTextView : UIView</div><div class="line"></div><div class="line">//滚动类型</div><div class="line">@property (nonatomic) MyTextScrollMode textScrollMode;</div><div class="line">//滚动方向</div><div class="line">@property (nonatomic) MyTextScrollDirection textScrollDirection;</div><div class="line">//字体颜色</div><div class="line">@property (nonatomic,strong) UIColor * textColor;</div><div class="line">//文字内容</div><div class="line">@property (nonatomic,strong) NSString * text;</div><div class="line">//字体大小</div><div class="line">@property (nonatomic,strong) UIFont * textFont;</div><div class="line">//滚动速度 不设置就默认</div><div class="line">@property (nonatomic)CGFloat speed;</div><div class="line">//连续滚动时两段之间间隔大小</div><div class="line">@property (nonatomic)CGFloat disance;</div><div class="line"></div><div class="line">//开始滚动</div><div class="line">- (void)startScroll;</div></pre></td></tr></table></figure></p>
-<p>如演示图所示，有三种模式可以设置，只有当文字长度超过ScrollTextView的宽度时，文字才会滚动，使用方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//设置连续滚动</div><div class="line">    self.ContinuousScrollTextView.textScrollMode = MyTextScrollContinuous;</div><div class="line">    self.ContinuousScrollTextView.textScrollDirection = MyTextScrollMoveLeft;</div><div class="line">    self.ContinuousScrollTextView.textColor = [UIColor orangeColor];</div><div class="line">    self.ContinuousScrollTextView.textFont = [UIFont systemFontOfSize:17.f];</div><div class="line">    self.ContinuousScrollTextView.text = @&quot;我是连续的滚动测试测试测试测试测试测试&quot;;</div></pre></td></tr></table></figure></p>
-<p>开始滚动时调用方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[self.ContinuousScrollTextView startScroll];</div></pre></td></tr></table></figure></p>
-<p>具体的使用和实现可以看一下小Demo，有兴趣可以共同探讨研究一下，代码地址<a href="https://github.com/duoduoxiao/UIScrollTextView" target="_blank" rel="external">点我进入</a><br>使用过程中有问题可以随时探讨，有错误的地方还望指针，大家觉得不错的话给个star支持一下，谢谢。</p>
+        <p>&#160; &#160; &#160; &#160;关于数据的缓存，网上的资料和博客很多，总的来说五种方法，plist，写文件，NSUserDefaults，FMDB等操作数据库以及苹果自家的coreData，这些如何如何使用，资料文档很多，这里不想多说。<br>&#160; &#160; &#160; &#160;主要想说的是在程序中如何使用它们，用来缓存程序中的数据。直接说现在我正在用的处理方法。<br><a id="more"></a></p>
+<p>&#160; &#160; &#160; &#160;首先，数据可以分为这几类，一类是用户主动下载的视频音乐之类的，这些文件相对很重要，一般存在Documents里面，当然，我没做过视频音乐下载类的应用，这方面的处理还有实际用过，这里就不说明。<br>&#160; &#160; &#160; &#160;另一类的数据就是在用户界面展示的数据，通过网络请求封装到模型里面展示在UI上的数据，这类数据也可以分两种，一种是主界面的数据，另一种是二级页面甚至更深层级的页面的数据。</p>
+<p>&#160; &#160; &#160; &#160;首先说这两类数据的区别，主界面的数据一般下次进入程序，需要显示上次退出前的数据，而二级页面的数据，只需要缓存在内存中，保证进入后刷新，跳转返回后再进去先显示之前的数据再刷新，程序退出再进去时，不需要显示上次的数据。<br>&#160; &#160; &#160; &#160;简单点说，就是主界面的数据缓存要存在程序的若干个生命周期中，每次更新。而二级页面的缓存数据只需要存在于程序的一个生命周期中。这是目前我的处理逻辑，主界面的数据的重要性大于二级界面，因为用户每次进app看到一片空白体验很差，二级界面则不需要。</p>
+<p>&#160; &#160; &#160; &#160;再来说具体这两种数据存在哪里。主界面的数据由于需要存在多个程序的生命周期中，所以需要存在沙盒中，我现在的处理就是需要缓存的模型遵循NSCoding协议，以文件的形式存入tmp文件夹，当然如果你觉得缓存相对重要，也可以存到Library/Caches文件夹中。<br>&#160; &#160; &#160; &#160;二级界面以及更深界面的数据，我处理的方式是数据缓存在NSCache中，自建一个NSCache的单例，专门用来缓存这些数据。当收到系统内存警告时，会自动清空。跟上面的temp文件夹类似，系统会自动管理。</p>
+<p>详细流程图如下：<br><img src="http://oe983oqm8.bkt.clouddn.com/1749624-189e3460f1de4b00.jpeg" alt="流程图"></p>
+<p>小提醒Tip：<br>&#160; &#160; &#160; &#160;更新版本更改版本号的时候，最好做一个判断，如果程序更新了版本，最好清空之前缓存的主界面的数据，不然如果模型有改动，可能会造成程序崩溃。</p>
+<p>&#160; &#160; &#160; &#160;这算是一个大纲吧，具体代码整理之后我会封装一个数据缓存的demo，会在之后的文章中介绍。感谢大家的支持，大家有任何问题都可以发邮件和我沟通交流，谢谢大家。</p>
 
       
     </div>
@@ -354,17 +355,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/29/iOS开发-利用UICollectionView实现广告栏无限轮播/" rel="next" title="[iOS开发]利用UICollectionView实现广告栏无限轮播">
-                <i class="fa fa-chevron-left"></i> [iOS开发]利用UICollectionView实现广告栏无限轮播
+              <a href="/2016/10/08/iOS开发-Xcode8兼容iOS7以及低版本Xcode调试高版本iOS系统/" rel="next" title="[iOS开发]Xcode8兼容iOS7以及低版本Xcode调试高版本iOS系统">
+                <i class="fa fa-chevron-left"></i> [iOS开发]Xcode8兼容iOS7以及低版本Xcode调试高版本iOS系统
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/08/iOS开发-Xcode8兼容iOS7以及低版本Xcode调试高版本iOS系统/" rel="prev" title="[iOS开发]Xcode8兼容iOS7以及低版本Xcode调试高版本iOS系统">
-                [iOS开发]Xcode8兼容iOS7以及低版本Xcode调试高版本iOS系统 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
